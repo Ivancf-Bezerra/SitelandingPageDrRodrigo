@@ -1,87 +1,92 @@
-<section id="servicos" class="py-20 lg:py-28 bg-stone-50">
+<section id="servicos" class="py-20 lg:py-28" style="background: linear-gradient(180deg, #060E1A 0%, #0F1F3D 100%)">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- Section Header -->
-    <div class="text-center mb-14">
-      <span class="inline-block text-xs font-semibold tracking-widest text-[#C9A84C] uppercase mb-3 bg-amber-50 px-4 py-1.5 rounded-full border border-amber-200">
-        O que oferecemos
-      </span>
-      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4" style="font-family: var(--font-serif)">
-        Nossos <span class="text-[#C9A84C]">Serviços</span>
-      </h2>
-      <p class="text-gray-600 max-w-xl mx-auto">
-        Procedimentos modernos e minimamente invasivos para realçar sua beleza natural com segurança e precisão.
-      </p>
+    <div class="mb-14">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="gold-rule"></div>
+        <span class="text-gold text-[10px] font-semibold tracking-[0.3em] uppercase">O que oferecemos</span>
+      </div>
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white" style="font-family: var(--font-serif)">
+          Nossos <span class="text-gold">Serviços</span>
+        </h2>
+        <p class="text-xs text-slate-500 max-w-xs">
+          Procedimentos modernos e minimamente invasivos para realçar sua beleza natural.
+        </p>
+      </div>
     </div>
 
     <!-- Grid de Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gold/10">
       @for (servico of servicos; track servico.titulo) {
         <article
-          class="group relative bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border overflow-hidden"
-          [class.border-[#C9A84C]]="servico.destaque"
-          [class.border-gray-100]="!servico.destaque"
+          class="group relative p-6 transition-all duration-300 hover:bg-navy-700/60"
+          [style.background]="servico.destaque ? 'linear-gradient(135deg, #0F1F3D 0%, #162D4F 100%)' : '#0A1628'"
         >
+          <!-- Top gold border on hover / always on destaque -->
+          <div
+            class="absolute top-0 left-0 right-0 h-px transition-colors duration-300"
+            [class.bg-gold]="servico.destaque"
+            [class.bg-gold/0]="!servico.destaque"
+            [class.group-hover:bg-gold/60]="!servico.destaque"
+          ></div>
+
           <!-- Destaque badge -->
           @if (servico.destaque) {
-            <div class="absolute top-0 right-0 bg-[#C9A84C] text-white text-xs font-semibold px-4 py-1.5 rounded-bl-xl">
+            <div class="absolute top-0 right-0 bg-gold text-navy-900 text-[9px] font-bold tracking-wider uppercase px-3 py-1">
               Mais Procurado
             </div>
           }
 
           <!-- Icon -->
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300"
-            [class.bg-amber-50]="!servico.destaque"
-            [class.bg-[#C9A84C]]="servico.destaque"
+          <div class="w-9 h-9 border mb-5 flex items-center justify-center transition-colors duration-300"
+            [class.border-gold]="servico.destaque"
+            [class.border-gold/25]="!servico.destaque"
+            [class.group-hover:border-gold/50]="!servico.destaque"
           >
             @switch (servico.icone) {
               @case ('face') {
-                <svg class="w-6 h-6" [class.text-[#C9A84C]]="!servico.destaque" [class.text-white]="servico.destaque" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
               }
               @case ('ear') {
-                <svg class="w-6 h-6" [class.text-[#C9A84C]]="!servico.destaque" [class.text-white]="servico.destaque" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
                 </svg>
               }
               @case ('smile') {
-                <svg class="w-6 h-6" [class.text-[#C9A84C]]="!servico.destaque" [class.text-white]="servico.destaque" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 12.75l6 6 9-13.5"/>
                 </svg>
               }
               @case ('sparkle') {
-                <svg class="w-6 h-6" [class.text-[#C9A84C]]="!servico.destaque" [class.text-white]="servico.destaque" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
                 </svg>
               }
               @case ('thread') {
-                <svg class="w-6 h-6" [class.text-[#C9A84C]]="!servico.destaque" [class.text-white]="servico.destaque" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
                 </svg>
               }
               @default {
-                <svg class="w-6 h-6" [class.text-[#C9A84C]]="!servico.destaque" [class.text-white]="servico.destaque" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
               }
             }
           </div>
 
-          <h3 class="text-lg font-bold text-gray-900 mb-2" style="font-family: var(--font-serif)">
-            {{ servico.titulo }}
-          </h3>
-          <p class="text-sm text-gray-600 leading-relaxed mb-5">
-            {{ servico.descricao }}
-          </p>
+          <h3 class="text-sm font-bold text-white mb-2" style="font-family: var(--font-serif)">{{ servico.titulo }}</h3>
+          <p class="text-xs text-slate-500 leading-relaxed mb-5">{{ servico.descricao }}</p>
 
           <!-- Benefícios -->
           <ul class="space-y-1.5 mb-6">
             @for (b of servico.beneficios; track b) {
-              <li class="flex items-center gap-2 text-xs text-gray-600">
-                <svg class="w-3.5 h-3.5 text-[#C9A84C] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                </svg>
+              <li class="flex items-center gap-2 text-xs text-slate-500">
+                <span class="text-gold text-[10px]">◆</span>
                 {{ b }}
               </li>
             }
@@ -89,10 +94,10 @@
 
           <a
             href="#contato"
-            class="text-sm font-semibold text-[#C9A84C] hover:text-[#a8852e] flex items-center gap-1.5 transition-colors"
+            class="text-[11px] font-semibold text-gold/60 hover:text-gold flex items-center gap-1.5 tracking-wider uppercase transition-colors"
           >
             Saiba mais
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
             </svg>
           </a>
@@ -101,13 +106,13 @@
     </div>
 
     <!-- Bottom CTA -->
-    <div class="text-center mt-12">
-      <p class="text-gray-600 mb-4">Tem dúvidas sobre qual procedimento é ideal para você?</p>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-10 pt-8 border-t border-gold/10">
+      <p class="text-sm text-slate-500">Tem dúvidas sobre qual procedimento é ideal para você?</p>
       <a
         href="#contato"
-        class="inline-flex items-center gap-2 bg-[#C9A84C] hover:bg-[#a8852e] text-white font-semibold px-8 py-3.5 rounded-full transition-colors duration-200 text-sm"
+        class="border border-gold text-gold hover:bg-gold hover:text-navy-900 text-xs font-semibold tracking-wider px-7 py-2.5 uppercase transition-all duration-200"
       >
-        Agendar Avaliação Gratuita
+        Agendar Avaliação
       </a>
     </div>
   </div>
