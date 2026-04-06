@@ -1,0 +1,122 @@
+<section id="galeria" class="py-20 lg:py-28 bg-stone-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Section Header -->
+    <div class="text-center mb-10">
+      <span class="inline-block text-xs font-semibold tracking-widest text-[#C9A84C] uppercase mb-3 bg-amber-50 px-4 py-1.5 rounded-full border border-amber-200">
+        Resultados reais
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4" style="font-family: var(--font-serif)">
+        Nossa <span class="text-[#C9A84C]">Galeria</span>
+      </h2>
+      <p class="text-gray-600 max-w-xl mx-auto">
+        Confira transformações reais de nossos pacientes antes e depois dos procedimentos.
+      </p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex justify-center mb-10">
+      <div class="inline-flex bg-white rounded-full p-1.5 border border-gray-200 shadow-sm gap-1">
+        <button
+          (click)="setTab('fotos')"
+          class="flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
+          [class.bg-[#C9A84C]]="activeTab() === 'fotos'"
+          [class.text-white]="activeTab() === 'fotos'"
+          [class.text-gray-600]="activeTab() !== 'fotos'"
+          [class.hover:text-gray-900]="activeTab() !== 'fotos'"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          Fotos
+        </button>
+        <button
+          (click)="setTab('videos')"
+          class="flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
+          [class.bg-[#C9A84C]]="activeTab() === 'videos'"
+          [class.text-white]="activeTab() === 'videos'"
+          [class.text-gray-600]="activeTab() !== 'videos'"
+          [class.hover:text-gray-900]="activeTab() !== 'videos'"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          Vídeos Pós-op
+        </button>
+      </div>
+    </div>
+
+    <!-- Fotos Tab -->
+    @if (activeTab() === 'fotos') {
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+        @for (foto of fotos; track foto.id) {
+          <div class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-amber-100 to-amber-200 cursor-pointer" [class]="foto.aspectRatio">
+            <!-- Placeholder image area -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+              <svg class="w-10 h-10 text-[#C9A84C] opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <!-- Hover overlay -->
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end p-4">
+              <span class="text-white/70 text-xs font-medium mb-1">{{ foto.categoria }}</span>
+              <span class="text-white text-sm font-semibold text-center">{{ foto.procedimento }}</span>
+            </div>
+          </div>
+        }
+      </div>
+
+      <p class="text-center text-sm text-gray-400 mt-6">
+        * As fotos serão inseridas com os resultados reais dos pacientes (com autorização).
+      </p>
+    }
+
+    <!-- Vídeos Tab -->
+    @if (activeTab() === 'videos') {
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        @for (video of videos; track video.id) {
+          <div
+            #videoWrapper
+            [attr.data-video-id]="video.id"
+            class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
+          >
+            <!-- Video embed with lazy load -->
+            <div class="relative aspect-video bg-gradient-to-br from-stone-800 to-stone-900">
+              @if (isVideoLoaded(video.id)) {
+                <iframe
+                  [src]="'https://www.youtube.com/embed/' + video.youtubeId + '?rel=0'"
+                  class="absolute inset-0 w-full h-full"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  [title]="video.titulo"
+                  loading="lazy"
+                ></iframe>
+              } @else {
+                <!-- Thumbnail placeholder -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center cursor-pointer">
+                  <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                  <p class="text-white/60 text-xs mt-3">Carregando vídeo...</p>
+                </div>
+              }
+            </div>
+            <div class="p-4">
+              <p class="text-xs text-[#C9A84C] font-semibold mb-1">{{ video.procedimento }}</p>
+              <h4 class="text-sm font-semibold text-gray-800 mb-1">{{ video.titulo }}</h4>
+              <p class="text-xs text-gray-400">{{ video.duracao }}</p>
+            </div>
+          </div>
+        }
+      </div>
+
+      <p class="text-center text-sm text-gray-400 mt-6">
+        * Os vídeos serão substituídos pelos conteúdos reais do canal do Dr. Rodrigo.
+      </p>
+    }
+  </div>
+</section>
