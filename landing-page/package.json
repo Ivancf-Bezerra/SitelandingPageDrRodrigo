@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:gh-pages": "ng build --base-href /SitelandingPageDrRodrigo/",
+    "deploy:gh-pages": "npm run build:gh-pages && npx angular-cli-ghpages --dir=dist/landing-page/browser --no-silent",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
