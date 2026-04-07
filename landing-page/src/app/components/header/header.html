@@ -12,21 +12,23 @@
     <div class="flex items-center justify-between h-14 lg:h-16">
 
       <!-- Logo -->
-      <a href="#" class="flex items-center gap-2.5" (click)="closeMenu()">
-        <div class="w-8 h-8 border border-gold flex items-center justify-center text-gold font-bold text-sm leading-none select-none">
+      <a [routerLink]="['/']" class="flex items-center gap-2.5" (click)="closeMenu()">
+        <div class="w-8 h-8 rounded-full border border-gold flex items-center justify-center text-gold font-bold text-sm leading-none select-none">
           R
         </div>
         <div class="leading-tight">
           <p class="text-[10px] font-semibold text-gold tracking-[0.25em] uppercase">Dr.</p>
-          <p class="text-sm font-bold text-white -mt-0.5 tracking-wide" style="font-family: var(--font-serif)">Rodrigo</p>
+          <p class="text-sm font-bold text-white -mt-0.5 tracking-wide" style="font-family: var(--font-display)">Rodrigo</p>
         </div>
       </a>
 
       <!-- Desktop Nav -->
       <nav class="hidden lg:flex items-center gap-6" aria-label="Navegação principal">
-        @for (link of navLinks; track link.anchor) {
+        @for (link of navLinks; track link.route) {
           <a
-            [href]="link.anchor"
+            [routerLink]="[link.route]"
+            routerLinkActive="text-gold"
+            [routerLinkActiveOptions]="{ exact: link.route === '/' }"
             class="text-xs font-medium tracking-wider text-slate-400 hover:text-gold uppercase transition-colors duration-200"
           >
             {{ link.label }}
@@ -36,15 +38,15 @@
 
       <!-- Desktop CTA -->
       <a
-        href="#contato"
-        class="hidden lg:inline-flex items-center gap-2 border border-gold text-gold hover:bg-gold hover:text-navy-900 text-xs font-semibold tracking-wider px-5 py-2 uppercase transition-all duration-200"
+        [routerLink]="['/agendamento']"
+        class="hidden lg:inline-flex items-center gap-2 rounded-md border border-gold text-gold hover:bg-gold hover:text-navy-900 text-xs font-semibold tracking-wider px-5 py-2 uppercase transition-all duration-200"
       >
         Agendar Consulta
       </a>
 
       <!-- Hamburger -->
       <button
-        class="lg:hidden p-2 text-slate-400 hover:text-gold transition-colors"
+        class="lg:hidden p-2 rounded-md text-slate-400 hover:text-gold transition-colors"
         (click)="toggleMenu()"
         [attr.aria-expanded]="menuOpen()"
         aria-label="Abrir menu"
@@ -66,9 +68,11 @@
   @if (menuOpen()) {
     <div class="lg:hidden bg-navy-800 border-t border-gold/15" role="dialog">
       <nav class="max-w-7xl mx-auto px-4 py-3 flex flex-col">
-        @for (link of navLinks; track link.anchor) {
+        @for (link of navLinks; track link.route) {
           <a
-            [href]="link.anchor"
+            [routerLink]="[link.route]"
+            routerLinkActive="text-gold"
+            [routerLinkActiveOptions]="{ exact: link.route === '/' }"
             class="text-xs font-medium tracking-wider text-slate-400 hover:text-gold uppercase py-3 border-b border-navy-700 transition-colors"
             (click)="closeMenu()"
           >
@@ -76,8 +80,8 @@
           </a>
         }
         <a
-          href="#contato"
-          class="mt-4 mb-2 text-center border border-gold text-gold hover:bg-gold hover:text-navy-900 font-semibold text-xs tracking-wider px-5 py-3 uppercase transition-all"
+          [routerLink]="['/agendamento']"
+          class="mt-4 mb-2 text-center rounded-md border border-gold text-gold hover:bg-gold hover:text-navy-900 font-semibold text-xs tracking-wider px-5 py-3 uppercase transition-all"
           (click)="closeMenu()"
         >
           Agendar Consulta

@@ -1,0 +1,33 @@
+<!-- Hero da página Galeria -->
+<section
+  class="relative pt-20 pb-8 lg:pt-28 lg:pb-10"
+  style="background: linear-gradient(180deg, #030810 0%, #060E1A 60%, #0A1628 100%)"
+>
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true"
+    style="background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 60px 60px">
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-3 mb-3">
+      <div class="gold-rule"></div>
+      <span class="text-gold text-[10px] font-semibold tracking-[0.3em] uppercase">Resultados reais</span>
+    </div>
+    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3" style="font-family: var(--font-display)">
+      Galeria de <span class="text-gold">Resultados</span>
+    </h1>
+    <p class="text-sm text-slate-400 max-w-lg">
+      Acompanhe a transformação de pacientes reais com Otomodelação — procedimento não cirúrgico para remodelar
+      e posicionar as orelhas com resultado imediato e natural.
+    </p>
+
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 mt-6 text-[11px] text-slate-500" aria-label="Navegação estrutural">
+      <a [routerLink]="['/']" class="hover:text-gold transition-colors">Início</a>
+      <span aria-hidden="true">›</span>
+      <span class="text-gold">Galeria</span>
+    </nav>
+  </div>
+</section>
+
+<!-- Componente de galeria completo -->
+<app-galeria></app-galeria>

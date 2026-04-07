@@ -1,14 +1,15 @@
 import { Component, HostListener, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 interface NavLink {
   label: string;
-  anchor: string;
+  route: string;
 }
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
@@ -17,12 +18,10 @@ export class Header {
   menuOpen = signal(false);
 
   navLinks: NavLink[] = [
-    { label: 'Sobre', anchor: '#sobre' },
-    { label: 'Serviços', anchor: '#servicos' },
-    { label: 'Depoimentos', anchor: '#depoimentos' },
-    { label: 'Galeria', anchor: '#galeria' },
-    { label: 'FAQ', anchor: '#faq' },
-    { label: 'Contato', anchor: '#contato' },
+    { label: 'Início',      route: '/' },
+    { label: 'Galeria',     route: '/galeria' },
+    { label: 'Agendamento', route: '/agendamento' },
+    { label: 'Contato',     route: '/contato' },
   ];
 
   @HostListener('window:scroll')

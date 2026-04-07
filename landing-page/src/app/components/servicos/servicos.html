@@ -1,119 +1,274 @@
-<section id="servicos" class="py-20 lg:py-28" style="background: linear-gradient(180deg, #060E1A 0%, #0F1F3D 100%)">
+<section id="servicos" class="py-14 lg:py-20" style="background: linear-gradient(180deg, #060E1A 0%, #0F1F3D 100%)">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- Section Header -->
-    <div class="mb-14">
-      <div class="flex items-center gap-3 mb-3">
+    <div class="mb-7">
+      <div class="flex items-center gap-3 mb-2">
         <div class="gold-rule"></div>
-        <span class="text-gold text-[10px] font-semibold tracking-[0.3em] uppercase">O que oferecemos</span>
+        <span class="text-gold text-[10px] font-semibold tracking-[0.3em] uppercase">Especialidade Principal</span>
       </div>
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-        <h2 class="text-2xl sm:text-3xl font-bold text-white" style="font-family: var(--font-serif)">
-          Nossos <span class="text-gold">Serviços</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white" style="font-family: var(--font-display)">
+          <span class="text-gold">Otomodelação</span> — Remodelação Não Cirúrgica de Orelhas
         </h2>
-        <p class="text-xs text-slate-500 max-w-xs">
-          Procedimentos modernos e minimamente invasivos para realçar sua beleza natural.
-        </p>
       </div>
     </div>
 
-    <!-- Grid de Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gold/10">
-      @for (servico of servicos; track servico.titulo) {
-        <article
-          class="group relative p-6 transition-all duration-300 hover:bg-navy-700/60"
-          [style.background]="servico.destaque ? 'linear-gradient(135deg, #0F1F3D 0%, #162D4F 100%)' : '#0A1628'"
-        >
-          <!-- Top gold border on hover / always on destaque -->
-          <div
-            class="absolute top-0 left-0 right-0 h-px transition-colors duration-300"
-            [class.bg-gold]="servico.destaque"
-            [class.bg-gold/0]="!servico.destaque"
-            [class.group-hover:bg-gold/60]="!servico.destaque"
-          ></div>
+    <!-- Card principal Otomodelação -->
+    <div
+      class="relative rounded-md p-8 lg:p-10 mb-4"
+      style="background: linear-gradient(135deg, #0F1F3D 0%, #162D4F 100%)"
+    >
+      <!-- Linha dourada no topo -->
+      <div class="absolute top-0 left-0 right-0 h-px bg-gold"></div>
 
-          <!-- Destaque badge -->
-          @if (servico.destaque) {
-            <div class="absolute top-0 right-0 bg-gold text-navy-900 text-[9px] font-bold tracking-wider uppercase px-3 py-1">
-              Mais Procurado
-            </div>
-          }
+      <!-- Badge destaque -->
+      <div class="absolute top-0 right-0 rounded-bl-md bg-gold text-navy-900 text-[9px] font-bold tracking-wider uppercase px-3 py-1">
+        Especialidade Exclusiva
+      </div>
 
-          <!-- Icon -->
-          <div class="w-9 h-9 border mb-5 flex items-center justify-center transition-colors duration-300"
-            [class.border-gold]="servico.destaque"
-            [class.border-gold/25]="!servico.destaque"
-            [class.group-hover:border-gold/50]="!servico.destaque"
-          >
-            @switch (servico.icone) {
-              @case ('face') {
-                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              }
-              @case ('ear') {
-                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
-                </svg>
-              }
-              @case ('smile') {
-                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 12.75l6 6 9-13.5"/>
-                </svg>
-              }
-              @case ('sparkle') {
-                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                </svg>
-              }
-              @case ('thread') {
-                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-                </svg>
-              }
-              @default {
-                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              }
-            }
-          </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
-          <h3 class="text-sm font-bold text-white mb-2" style="font-family: var(--font-serif)">{{ servico.titulo }}</h3>
-          <p class="text-xs text-slate-500 leading-relaxed mb-5">{{ servico.descricao }}</p>
+        <!-- ── Coluna esquerda: toda informação ── -->
+        <div>
+          <p class="text-sm text-slate-400 leading-relaxed mb-6">
+            Técnica exclusiva que utiliza biomateriais especiais para remodelar a cartilagem auricular,
+            corrigindo a posição e a forma das orelhas sem cirurgia. O procedimento é rápido, seguro
+            e com resultado visível imediatamente.
+          </p>
 
           <!-- Benefícios -->
-          <ul class="space-y-1.5 mb-6">
-            @for (b of servico.beneficios; track b) {
-              <li class="flex items-center gap-2 text-xs text-slate-500">
-                <span class="text-gold text-[10px]">◆</span>
-                {{ b }}
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-7">
+            @for (b of beneficios; track b.titulo) {
+              <li class="flex items-start gap-2.5">
+                <span class="text-gold text-[10px] mt-0.5 flex-shrink-0">◆</span>
+                <div>
+                  <p class="text-xs font-semibold text-white">{{ b.titulo }}</p>
+                  <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">{{ b.descricao }}</p>
+                </div>
               </li>
             }
           </ul>
 
-          <a
-            href="#contato"
-            class="text-[11px] font-semibold text-gold/60 hover:text-gold flex items-center gap-1.5 tracking-wider uppercase transition-colors"
+          <!-- Como funciona -->
+          <p class="text-[10px] font-semibold text-gold tracking-[0.3em] uppercase mb-4">Como funciona</p>
+          <ol class="space-y-3 mb-8">
+            @for (etapa of etapas; track etapa.numero) {
+              <li class="flex items-start gap-3">
+                <div class="w-7 h-7 rounded-full border border-gold/40 flex items-center justify-center flex-shrink-0">
+                  <span class="text-gold text-[10px] font-bold">{{ etapa.numero }}</span>
+                </div>
+                <div class="pt-0.5">
+                  <p class="text-xs font-bold text-white">{{ etapa.label }}</p>
+                  <p class="text-xs text-slate-500 mt-0.5">{{ etapa.descricao }}</p>
+                </div>
+              </li>
+            }
+          </ol>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap gap-3">
+            <a
+              [routerLink]="['/agendamento']"
+              class="rounded-md bg-gold hover:bg-gold/90 text-navy-900 text-xs font-semibold tracking-wider px-6 py-2.5 uppercase transition-all"
+            >
+              Agendar Avaliação
+            </a>
+            <button
+              type="button"
+              (click)="abrirPopup()"
+              class="rounded-md border border-gold/40 text-gold hover:border-gold hover:bg-gold/10 text-xs font-semibold tracking-wider px-6 py-2.5 uppercase transition-all"
+            >
+              Avaliação rápida
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Coluna direita: cards empilhados e angulados ── -->
+        <div #fotosContainer class="fotos-container relative flex items-center justify-center" style="min-height: 560px;">
+
+          <p class="absolute top-0 left-1/2 -translate-x-1/2 text-[9px] font-semibold text-gold/50 tracking-[0.3em] uppercase whitespace-nowrap select-none pointer-events-none">
+            Antes &amp; Depois
+          </p>
+
+          <!-- Card Antes — clique amplia; tirar o mouse reverte o scale -->
+          <figure
+            class="absolute w-72 rounded-md overflow-hidden border border-gold/20 bg-[#0A1628] foto-card-antes"
+            [class.visivel]="fotosVisiveis() && !animacaoCompleta()"
+            [class.animado]="fotosVisiveis() && animacaoCompleta()"
+            [class.card-foco]="animacaoCompleta() && cardFoco() === 'antes'"
+            [attr.tabindex]="animacaoCompleta() ? 0 : -1"
+            role="button"
+            [attr.aria-pressed]="cardFoco() === 'antes'"
+            [attr.aria-label]="'Antes — clique para ampliar; ao tirar o mouse volta ao tamanho normal'"
+            (click)="selecionarFotoCard('antes')"
+            (mouseleave)="onFotoCardMouseleave('antes')"
+            (keydown)="onFotoCardKeydown($event, 'antes')"
           >
-            Saiba mais
-            <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </article>
-      }
+            <div class="aspect-[4/5] relative">
+              <app-editable-image
+                slotId="servicos-antes-1"
+                [fallbackSrc]="'assets/fotos/antes-depois/otomo-01-antes.jpg'"
+                alt="Antes da Otomodelação"
+                placeholderLabel="Antes"
+                wrapperClass="absolute inset-0 w-full h-full"
+                imgClass="absolute inset-0 w-full h-full object-cover pointer-events-none"
+              />
+            </div>
+            <figcaption class="text-[9px] text-slate-500 uppercase tracking-wider text-center py-2 border-t border-gold/10 pointer-events-none">Antes</figcaption>
+          </figure>
+
+          <!-- Card Depois — frente, inclinado à direita (dispara animacaoCompleta ao terminar) -->
+          <figure
+            class="absolute w-72 rounded-md overflow-hidden border border-gold/30 bg-[#0A1628] foto-card-depois"
+            [class.visivel]="fotosVisiveis() && !animacaoCompleta()"
+            [class.animado]="fotosVisiveis() && animacaoCompleta()"
+            [class.card-foco]="animacaoCompleta() && cardFoco() === 'depois'"
+            [attr.tabindex]="animacaoCompleta() ? 0 : -1"
+            role="button"
+            [attr.aria-pressed]="cardFoco() === 'depois'"
+            [attr.aria-label]="'Depois — clique para ampliar; ao tirar o mouse volta ao tamanho normal'"
+            (click)="selecionarFotoCard('depois')"
+            (mouseleave)="onFotoCardMouseleave('depois')"
+            (keydown)="onFotoCardKeydown($event, 'depois')"
+            (animationend)="onAnimacaoFimEntrada($event)"
+          >
+            <div class="aspect-[4/5] relative">
+              <app-editable-image
+                slotId="servicos-depois-1"
+                [fallbackSrc]="'assets/fotos/antes-depois/otomo-01-depois.jpg'"
+                alt="Depois da Otomodelação"
+                placeholderLabel="Depois"
+                wrapperClass="absolute inset-0 w-full h-full"
+                imgClass="absolute inset-0 w-full h-full object-cover pointer-events-none"
+              />
+            </div>
+            <figcaption class="text-[9px] text-slate-500 uppercase tracking-wider text-center py-2 border-t border-gold/10 pointer-events-none">Depois</figcaption>
+          </figure>
+
+        </div>
+
+      </div>
     </div>
 
-    <!-- Bottom CTA -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-10 pt-8 border-t border-gold/10">
-      <p class="text-sm text-slate-500">Tem dúvidas sobre qual procedimento é ideal para você?</p>
-      <a
-        href="#contato"
-        class="border border-gold text-gold hover:bg-gold hover:text-navy-900 text-xs font-semibold tracking-wider px-7 py-2.5 uppercase transition-all duration-200"
-      >
-        Agendar Avaliação
-      </a>
+    <!-- Banner Odontologia Clínica -->
+    <div
+      class="relative rounded-md p-6 border border-gold/15 overflow-hidden mt-px"
+      style="background: #0A1628"
+    >
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+
+        <!-- Ícone dente -->
+        <div class="w-10 h-10 rounded-md border border-gold/25 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-gold/70" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-[9px] font-bold tracking-wider uppercase bg-gold/10 text-gold border border-gold/20 rounded px-2 py-0.5">
+              Novidade
+            </span>
+            <p class="text-xs font-semibold text-white">Odontologia Clínica</p>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            "Além da estética, também estou atendendo a parte clínica!
+            <strong class="text-slate-300">Limpeza, clareamento, restauração, remoção de cárie</strong>
+            e tudo que seu sorriso precisa pra ficar saudável e bonito."
+          </p>
+        </div>
+
+        <a
+          [routerLink]="['/contato']"
+          class="flex-shrink-0 rounded-md border border-gold/30 text-gold/70 hover:border-gold hover:text-gold text-xs font-semibold tracking-wider px-5 py-2.5 uppercase transition-all whitespace-nowrap"
+        >
+          Saiba mais
+        </a>
+      </div>
     </div>
+
   </div>
+
+  @if (popupOpen()) {
+    <div class="fixed inset-0 z-[70] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" (click)="fecharPopup()">
+      <div class="w-full max-w-xl rounded-md border border-gold/20 bg-[#0A1628] p-6 sm:p-7" (click)="$event.stopPropagation()">
+        <div class="flex items-start justify-between gap-4 mb-5">
+          <div>
+            <p class="text-[10px] font-semibold text-gold tracking-[0.3em] uppercase">Avaliação rápida</p>
+            <h3 class="text-lg font-bold text-white mt-1" style="font-family: var(--font-display)">
+              Responda 3 perguntas
+            </h3>
+          </div>
+          <button
+            type="button"
+            (click)="fecharPopup()"
+            class="w-8 h-8 rounded-md border border-gold/20 text-slate-400 hover:text-gold hover:border-gold/40 flex items-center justify-center transition-colors"
+            aria-label="Fechar popup"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="space-y-5">
+          <div>
+            <p class="text-sm text-slate-300 mb-2">a) Você sente que as suas orelhas afetam sua autoestima?</p>
+            <div class="flex gap-3">
+              <button type="button" (click)="respostaA.set('sim')" class="rounded-md px-4 py-2 text-xs font-semibold border transition-all"
+                [class.bg-gold]="respostaA() === 'sim'" [class.text-navy-900]="respostaA() === 'sim'" [class.border-gold]="respostaA() === 'sim'"
+                [class.border-gold/30]="respostaA() !== 'sim'" [class.text-slate-300]="respostaA() !== 'sim'">Sim</button>
+              <button type="button" (click)="respostaA.set('nao')" class="rounded-md px-4 py-2 text-xs font-semibold border transition-all"
+                [class.bg-gold]="respostaA() === 'nao'" [class.text-navy-900]="respostaA() === 'nao'" [class.border-gold]="respostaA() === 'nao'"
+                [class.border-gold/30]="respostaA() !== 'nao'" [class.text-slate-300]="respostaA() !== 'nao'">Não</button>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-sm text-slate-300 mb-2">b) O medo de cirurgia te afasta de uma mudança que você quer?</p>
+            <div class="flex gap-3">
+              <button type="button" (click)="respostaB.set('sim')" class="rounded-md px-4 py-2 text-xs font-semibold border transition-all"
+                [class.bg-gold]="respostaB() === 'sim'" [class.text-navy-900]="respostaB() === 'sim'" [class.border-gold]="respostaB() === 'sim'"
+                [class.border-gold/30]="respostaB() !== 'sim'" [class.text-slate-300]="respostaB() !== 'sim'">Sim</button>
+              <button type="button" (click)="respostaB.set('nao')" class="rounded-md px-4 py-2 text-xs font-semibold border transition-all"
+                [class.bg-gold]="respostaB() === 'nao'" [class.text-navy-900]="respostaB() === 'nao'" [class.border-gold]="respostaB() === 'nao'"
+                [class.border-gold/30]="respostaB() !== 'nao'" [class.text-slate-300]="respostaB() !== 'nao'">Não</button>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-sm text-slate-300 mb-2">c) Quer conhecer um especialista em otomodelação sem corte e sem dor?</p>
+            <div class="flex gap-3">
+              <button type="button" (click)="respostaC.set('sim')" class="rounded-md px-4 py-2 text-xs font-semibold border transition-all"
+                [class.bg-gold]="respostaC() === 'sim'" [class.text-navy-900]="respostaC() === 'sim'" [class.border-gold]="respostaC() === 'sim'"
+                [class.border-gold/30]="respostaC() !== 'sim'" [class.text-slate-300]="respostaC() !== 'sim'">Sim</button>
+              <button type="button" (click)="respostaC.set('nao')" class="rounded-md px-4 py-2 text-xs font-semibold border transition-all"
+                [class.bg-gold]="respostaC() === 'nao'" [class.text-navy-900]="respostaC() === 'nao'" [class.border-gold]="respostaC() === 'nao'"
+                [class.border-gold/30]="respostaC() !== 'nao'" [class.text-slate-300]="respostaC() !== 'nao'">Não</button>
+            </div>
+          </div>
+        </div>
+
+        @if (todasSim()) {
+          <div class="mt-6 border-t border-gold/10 pt-5">
+            <p class="text-sm text-gold mb-4">
+              Se você respondeu "Sim", deixe seu contato que um dos nossos atendentes irá falar com você!
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <input [(ngModel)]="nomeLead" type="text" placeholder="Nome"
+                class="rounded-md border border-gold/20 bg-[#0F1F3D] text-white placeholder-slate-600 text-sm px-4 py-3 focus:outline-none focus:border-gold/60" />
+              <input [(ngModel)]="telefoneLead" type="tel" placeholder="Telefone"
+                class="rounded-md border border-gold/20 bg-[#0F1F3D] text-white placeholder-slate-600 text-sm px-4 py-3 focus:outline-none focus:border-gold/60" />
+            </div>
+            <a
+              [routerLink]="['/agendamento']"
+              class="mt-4 inline-flex w-full justify-center rounded-md bg-gold hover:bg-gold/90 text-navy-900 text-xs font-semibold tracking-wider px-6 py-3 uppercase transition-all"
+              (click)="fecharPopup()"
+            >
+              Quero agendar agora
+            </a>
+          </div>
+        }
+      </div>
+    </div>
+  }
 </section>

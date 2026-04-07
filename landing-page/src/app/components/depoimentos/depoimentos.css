@@ -1,0 +1,13 @@
+.depoimento-texto {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 55, 0.2) transparent;
+}
+
+.depoimento-texto::-webkit-scrollbar {
+  width: 4px;
+}
+
+.depoimento-texto::-webkit-scrollbar-thumb {
+  background-color: rgba(212, 175, 55, 0.25);
+  border-radius: 9999px;
+}

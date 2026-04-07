@@ -1,25 +1,13 @@
 import { Component } from '@angular/core';
-
-interface Destaque {
-  valor: string;
-  label: string;
-  descricao: string;
-}
+import { EditableImage } from '../editable-image/editable-image';
 
 @Component({
   selector: 'app-sobre',
-  imports: [],
+  imports: [EditableImage],
   templateUrl: './sobre.html',
   styleUrl: './sobre.css'
 })
 export class Sobre {
-  destaques: Destaque[] = [
-    { valor: '500+', label: 'Pacientes', descricao: 'Atendidos com excelência' },
-    { valor: '5+', label: 'Anos', descricao: 'De experiência clínica' },
-    { valor: '3', label: 'Especializações', descricao: 'Em procedimentos estéticos' },
-    { valor: '98%', label: 'Satisfação', descricao: 'Avaliação dos pacientes' },
-  ];
-
   formacoes = [
     'Especialização em Harmonização Orofacial',
     'Técnicas Avançadas de Otomodelação',

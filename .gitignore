@@ -1,6 +1,9 @@
 # Cursor IDE
 .cursor/
 
+# Scratch / checks locais
+_gh-pages-check/
+
 # Angular build output
 landing-page/dist/
 landing-page/.angular/

@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@clinica.local",
+      "passwordHash": "SUBSTITUA_POR_HASH_BCRYPT",
+      "role": "admin",
+      "nivel": 0,
+      "nomeExibicao": "Administrador",
+      "createdAt": "2026-04-07T00:00:00.000Z"
+    }
+  ],
+  "overrides": {}
+}

@@ -1,0 +1,51 @@
+<div [class]="wrapperClass()" class="editable-image-root relative overflow-hidden w-full h-full">
+  @if (src()) {
+    <img [src]="src()" [alt]="alt()" [class]="imgClass()" loading="lazy" />
+  } @else {
+    <div
+      class="flex flex-col items-center justify-center text-center px-6 w-full h-full min-h-[12rem]"
+      style="background: linear-gradient(160deg, #0F1F3D 0%, #0A1628 100%)"
+    >
+      <svg class="w-16 h-16 text-gold opacity-20 mb-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
+        />
+      </svg>
+      <p class="text-[10px] text-slate-600 uppercase tracking-widest">{{ placeholderLabel() }}</p>
+    </div>
+  }
+
+  @if (auth.isAdminNivel0()) {
+    <div
+      class="absolute bottom-0 left-0 right-0 z-10 flex flex-wrap items-center gap-1.5 justify-center px-2 py-2 bg-navy-900/90 border-t border-gold/20"
+      (click)="$event.stopPropagation()"
+      (keydown)="$event.stopPropagation()"
+    >
+      <label
+        class="inline-flex cursor-pointer items-center justify-center rounded border border-gold/40 bg-gold/10 px-2 py-1.5 text-[9px] font-semibold uppercase tracking-wider text-gold hover:bg-gold/20 disabled:opacity-50"
+      >
+        @if (uploading()) {
+          Enviando…
+        } @else {
+          Editar foto
+        }
+        <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" class="sr-only" (change)="onFile($event)" [disabled]="uploading()" />
+      </label>
+      @if (images.hasOverride(slotId())) {
+        <button
+          type="button"
+          class="rounded border border-slate-600 px-2 py-1 text-[9px] font-semibold uppercase tracking-wider text-slate-300 hover:border-gold/50 hover:text-gold"
+          (click)="revert($event)"
+        >
+          Padrão
+        </button>
+      }
+    </div>
+  }
+
+  @if (errorMsg()) {
+    <p class="absolute top-1 left-1 right-1 z-10 rounded bg-red-950/90 px-2 py-1 text-center text-[9px] text-red-200">
+      {{ errorMsg() }}
+    </p>
+  }
+</div>
