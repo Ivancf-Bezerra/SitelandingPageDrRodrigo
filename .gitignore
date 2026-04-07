@@ -1,20 +1,22 @@
+# Código-fonte e pastas de trabalho (mantidas só localmente; não entram no Git)
+landing-page/
+admin-api/
+docs/
+_gh-pages-check/
+
 # Cursor IDE
 .cursor/
 
-# Scratch / checks locais
-_gh-pages-check/
+# Questionários / binários locais
+*.docx
 
-# Angular build output
-landing-page/dist/
-landing-page/.angular/
-
-# Node modules
-landing-page/node_modules/
+# OS
+Thumbs.db
+.DS_Store
 
 # Env / secrets
 *.env
 .env.*
 
-# OS
-Thumbs.db
-.DS_Store
+# CNAME na raiz: no Pages entra via deploy (gh-pages); não versionar no main
+/CNAME
