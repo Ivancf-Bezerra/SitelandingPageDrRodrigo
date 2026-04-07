@@ -11,10 +11,11 @@
       </p>
     </div>
 
-    @if (!apiConfigured) {
+    @if (!apiConfigured()) {
       <p class="mb-4 rounded border border-amber-500/40 bg-amber-950/40 px-3 py-2 text-xs text-amber-200">
-        Defina <code class="text-amber-100/90">environment.apiUrl</code> no build para produção ou use
-        <code class="text-amber-100/90">ng serve</code> (desenvolvimento aponta para a API local).
+        No GitHub Pages, coloque a URL pública da API em <code class="text-amber-100/90">public/api-config.json</code> (campo
+        <code class="text-amber-100/90">apiUrl</code>) e rode <code class="text-amber-100/90">npm run deploy:gh-pages</code>.
+        Em desenvolvimento, use <code class="text-amber-100/90">ng serve</code> (usa <code class="text-amber-100/90">environment.development.ts</code>).
       </p>
     }
 
@@ -54,7 +55,7 @@
       </div>
       <button
         type="submit"
-        [disabled]="busy() || !apiConfigured"
+        [disabled]="busy() || !apiConfigured()"
         class="w-full rounded-md bg-gold py-3 text-xs font-semibold uppercase tracking-wider text-navy-900 transition-colors hover:bg-gold/90 disabled:cursor-not-allowed disabled:opacity-50"
       >
         @if (busy()) {

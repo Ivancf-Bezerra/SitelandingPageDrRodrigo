@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { Observable, catchError, map, of, tap } from 'rxjs';
-import { environment } from '../../environments/environment';
 import { AdminSessionStore } from './admin-session.store';
+import { ApiRuntimeConfigService } from './api-runtime-config.service';
 
 export interface MeUser {
   id: string;
@@ -16,6 +16,7 @@ export interface MeUser {
 export class AuthService {
   private readonly http = inject(HttpClient);
   private readonly store = inject(AdminSessionStore);
+  private readonly apiConfig = inject(ApiRuntimeConfigService);
 
   readonly user = signal<MeUser | null>(null);
 
@@ -25,7 +26,7 @@ export class AuthService {
   });
 
   private apiBase(): string {
-    return (environment.apiUrl || '').replace(/\/$/, '');
+    return this.apiConfig.apiBase();
   }
 
   restoreSession(): Observable<void> {

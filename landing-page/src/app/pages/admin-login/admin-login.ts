@@ -1,9 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
-import { environment } from '../../../environments/environment';
+import { ApiRuntimeConfigService } from '../../services/api-runtime-config.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -14,17 +14,20 @@ import { environment } from '../../../environments/environment';
 export class AdminLogin {
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
+  private readonly apiConfig = inject(ApiRuntimeConfigService);
 
   email = '';
   password = '';
   busy = signal(false);
   error = signal<string | null>(null);
 
-  readonly apiConfigured = !!environment.apiUrl;
+  readonly apiConfigured = computed(() => !!this.apiConfig.apiBaseUrl());
 
   submit() {
-    if (!environment.apiUrl) {
-      this.error.set('API não configurada (environment.apiUrl vazio).');
+    if (!this.apiConfig.apiBase()) {
+      this.error.set(
+        'API não configurada. Preencha public/api-config.json com apiUrl (e rode deploy) ou defina environment.apiUrl no build.',
+      );
       return;
     }
     this.busy.set(true);

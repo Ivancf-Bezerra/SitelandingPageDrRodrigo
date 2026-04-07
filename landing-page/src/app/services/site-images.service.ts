@@ -1,17 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { Observable, catchError, map, of, tap } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { ApiRuntimeConfigService } from './api-runtime-config.service';
 
 @Injectable({ providedIn: 'root' })
 export class SiteImagesService {
   private readonly http = inject(HttpClient);
+  private readonly apiConfig = inject(ApiRuntimeConfigService);
 
   /** Caminhos públicos retornados pela API (ex. `/uploads/arquivo.jpg`). */
   readonly overrides = signal<Record<string, string>>({});
 
   private apiBase(): string {
-    return (environment.apiUrl || '').replace(/\/$/, '');
+    return this.apiConfig.apiBase();
   }
 
   load(): Observable<void> {

@@ -1,10 +1,10 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { AdminSessionStore } from './admin-session.store';
+import { ApiRuntimeConfigService } from './api-runtime-config.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  const base = (environment.apiUrl || '').replace(/\/$/, '');
+  const base = inject(ApiRuntimeConfigService).apiBase();
   if (!base || !req.url.startsWith(base)) {
     return next(req);
   }

@@ -4,6 +4,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { routes } from './app.routes';
 import { authInterceptor } from './services/auth.interceptor';
 import { appInitializerFactory } from './app-initializer';
+import { ApiRuntimeConfigService } from './services/api-runtime-config.service';
 import { AuthService } from './services/auth.service';
 import { SiteImagesService } from './services/site-images.service';
 
@@ -16,7 +17,7 @@ export const appConfig: ApplicationConfig = {
       provide: APP_INITIALIZER,
       multi: true,
       useFactory: appInitializerFactory,
-      deps: [SiteImagesService, AuthService],
+      deps: [ApiRuntimeConfigService, SiteImagesService, AuthService],
     },
   ]
 };

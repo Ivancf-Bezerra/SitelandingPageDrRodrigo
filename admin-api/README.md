@@ -30,4 +30,12 @@ Altere a senha trocando o hash em `data/database.json` ou removendo o arquivo pa
 
 ## Produção
 
-Hospede esta API em um serviço com HTTPS. Defina no build do Angular `environment.apiUrl` com a URL pública da API e `JWT_SECRET` forte no servidor.
+Hospede esta API em um serviço com HTTPS (Railway, Render, VPS, etc.). No servidor: `JWT_SECRET` forte e CORS já reflete a origem (`cors({ origin: true })`), compatível com GitHub Pages.
+
+**Site no GitHub Pages:** a API **não** roda no Pages; só o Angular estático. O front lê a URL da API em `landing-page/public/api-config.json` (campo `apiUrl`, sem barra no final). Depois de editar, rode `npm run deploy:gh-pages` na pasta `landing-page`. Se preferir, defina `environment.apiUrl` no build — esse valor tem prioridade sobre o JSON.
+
+Exemplo de `api-config.json`:
+
+```json
+{ "apiUrl": "https://sua-api.onrender.com" }
+```
