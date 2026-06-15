@@ -1,0 +1,6 @@
+Coloque as imagens JPG aqui:
+
+  rilton-hero.jpg   — retrato vertical (hero, ~800×1000px)
+  rilton-sobre.jpg  — retrato (seção Sobre, ~600×800px)
+
+Comprima antes do deploy (< 200 KB por foto).
